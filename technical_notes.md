@@ -127,8 +127,6 @@ view = (
 session = fo.launch_app(view)
 ````
 
-Use code with caution.
-
 Use the FiftyOne App. In the app, you can easily filter for specific types of errors, such as:
 
     False positives: High-confidence model predictions that do not have a corresponding ground truth label nearby.
@@ -153,7 +151,6 @@ view = dataset.filter_by(F("ground_truth").is_empty())
 # You can also filter for specific classes that are un-annotated
 view = dataset.filter_by(F("ground_truth.detections").is_missing())
 ````
-Use code with caution.
 
 Find duplicate annotations. Duplicate bounding boxes can be a common problem.
 ````python
@@ -182,7 +179,6 @@ import fiftyone as fo
 dataset = fo.load_dataset("my_dataset")
 session = fo.launch_app(dataset)
 ````
-Use code with caution.
 
 Navigate and inspect. Use the app to browse your images. You can manually inspect each sample for issues like incorrect bounding boxes, class labels, or missed objects.
 Tag samples. When you find a sample that needs attention, use FiftyOne's tagging system to mark it. For example, add the tag "needs-review".
@@ -193,8 +189,6 @@ Create a view of tagged samples. Once you have flagged all the samples, you can 
 review_view = dataset.match_tags("needs-review")
 # You can then export this view for your annotation tool
 ````
-Use code with caution.
- 
 
 Exporting and re-annotating the images
 After creating a view of the images you want to re-annotate, you can export them to your annotation tool.
@@ -205,7 +199,6 @@ Create a view.
 # Example view of images with annotation issues
 review_view = dataset.filter_by(...)
 ````
-Use code with caution.
 
 Use the annotate() method. Voxel51 has integrations with platforms like CVAT and Labelbox.
 ````python
@@ -213,7 +206,7 @@ Use the annotate() method. Voxel51 has integrations with platforms like CVAT and
 # Use the `annotate` method to send the view to a connected annotation backend
 review_view.annotate(backend="cvat")
 ````
-Use code with caution.
+
 Export the view manually. You can also export the file paths to a text file for use with any annotation tool.
 ````python
 
@@ -225,8 +218,6 @@ with open("images_to_reannotate.txt", "w") as f:
     for path in filepaths:
         f.write(path + "\n")
 ````
-Use code with caution.
- 
 
     Managing annotation mistakes with FiftyOne and Labelbox
     Feb 24, 2021 — Find annotation mistakes with FiftyOne. FiftyOne also includes the FiftyOne Brain package that contains various method...
